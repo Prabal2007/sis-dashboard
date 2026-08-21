@@ -440,7 +440,7 @@ export default function SiblingStudyDashboard() {
   };
 
   const progressPercentage = (timeLeft / (mode === "study" ? 50 * 60 : 10 * 60)) * 100;
-  const strokeDashoffset = 314 - (314 * progressPercentage) / 100;
+  const strokeDashoffset = 364 - (364 * progressPercentage) / 100;
 
   const formatTime = (seconds) => {
     const mins = Math.floor(seconds / 60);
@@ -468,7 +468,6 @@ export default function SiblingStudyDashboard() {
       return;
     }
     
-    // Clean country formats (strip brackets, space, dashes)
     const cleanNumber = brotherWhatsApp.replace(/\D/g, "");
     
     let text;
@@ -497,7 +496,6 @@ export default function SiblingStudyDashboard() {
     setTickets([...tickets, newT]);
     setTicketDesc("");
 
-    // Trigger immediate realistic WhatsApp link redirection
     dispatchWhatsAppMessage(ticketType, desc);
   };
 
@@ -556,82 +554,83 @@ export default function SiblingStudyDashboard() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center select-none selection:bg-rose-500/20 selection:text-rose-600 transition-colors duration-500 relative pb-10">
+    <div className="min-h-screen w-full flex flex-col items-center select-none selection:bg-rose-500/20 selection:text-rose-600 transition-colors duration-500 relative pb-16 px-4 sm:px-8 md:px-12">
       
-      {/* Visual Floating Ambient Orbs */}
-      <div className="absolute top-10 left-[5%] w-72 h-72 bg-rose-500/5 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-20 right-[5%] w-80 h-80 bg-cyan-500/5 rounded-full blur-3xl pointer-events-none" />
+      {/* Visual Floating Immersive Ambient Orbs */}
+      <div className="absolute top-[5%] right-[10%] w-[550px] h-[550px] bg-rose-500/8 dark:bg-rose-500/10 rounded-full blur-[140px] pointer-events-none animate-pulse" style={{ animationDuration: '7s' }} />
+      <div className="absolute bottom-[15%] left-[5%] w-[650px] h-[650px] bg-cyan-500/8 dark:bg-cyan-500/10 rounded-full blur-[150px] pointer-events-none animate-pulse" style={{ animationDuration: '10s' }} />
+      <div className="absolute top-[35%] left-[45%] w-[450px] h-[450px] bg-purple-500/4 dark:bg-purple-500/8 rounded-full blur-[120px] pointer-events-none" />
 
       {/* Hidden Loop Audios */}
       <audio ref={lofiAudioRef} src="https://www.chosic.com/wp-content/uploads/2021/04/Warm-Lights.mp3" loop preload="auto" />
       <audio ref={rainAudioRef} src="https://www.soundjay.com/nature/sounds/rain-07.mp3" loop preload="auto" />
 
-      {/* --- TOP GLOBAL NAVIGATION HEADER --- */}
-      <header className="w-full max-w-5xl px-4 mt-6 sm:mt-8 relative z-20">
-        <div className="bg-[var(--bg-card)] border border-[var(--border-color)] rounded-3xl p-4 sm:p-5 flex flex-col md:flex-row items-center justify-between gap-4 shadow-[var(--card-shadow)] backdrop-blur-xl">
+      {/* --- TOP WIDESCREEN GLOBAL NAVIGATION HEADER --- */}
+      <header className="w-full max-w-[1400px] mt-8 relative z-20">
+        <div className="bg-[var(--bg-card)] border border-[var(--border-color)] rounded-[2.5rem] p-5 sm:p-6 sm:px-10 flex flex-col lg:flex-row items-center justify-between gap-6 shadow-[var(--card-shadow)] backdrop-blur-xl">
           
           {/* Logo & Identity */}
-          <div className="flex items-center gap-3">
-            <div className="p-2.5 bg-rose-500/10 border border-rose-500/25 rounded-2xl text-[var(--color-accent)] animate-pulse">
-              <HeartPulse className="w-6 h-6" />
+          <div className="flex items-center gap-4 text-center lg:text-left">
+            <div className="p-3.5 bg-rose-500/10 border border-rose-500/20 rounded-2xl text-[var(--color-accent)] animate-pulse shadow-sm">
+              <HeartPulse className="w-8 h-8" />
             </div>
             <div>
-              <h1 className="text-base sm:text-lg font-bold tracking-tight text-[var(--text-title)] flex items-center gap-2">
+              <h1 className="text-xl sm:text-2xl font-black tracking-tight text-[var(--text-title)] flex items-center gap-3 justify-center lg:justify-start">
                 Dr. {sisterName}'s Survival Terminal
-                <span className="text-[10px] font-mono font-medium px-2 py-0.5 rounded-full bg-rose-500/10 text-[var(--color-accent)] border border-rose-500/25">
-                  Remote Edition
+                <span className="text-[10px] font-mono font-extrabold px-3 py-1 rounded-full bg-rose-500/10 text-[var(--color-accent)] border border-rose-500/20 shadow-sm uppercase tracking-wide">
+                  Remote Care
                 </span>
               </h1>
-              <p className="text-[10px] sm:text-xs text-[var(--text-main)] opacity-80">
-                Mathura 📍 Lucknow Care Package Link
+              <p className="text-xs sm:text-sm text-[var(--text-main)] font-medium opacity-85 mt-0.5">
+                Mathura 📍 Lucknow Sibling Link • Real-Time Dashboard
               </p>
             </div>
           </div>
 
           {/* Navigation Tabs Bar */}
-          <nav className="flex flex-wrap items-center bg-[var(--bg-primary)] p-1 rounded-2xl border border-[var(--border-color)] gap-0.5">
+          <nav className="flex flex-wrap justify-center items-center bg-[var(--bg-primary)] p-1.5 rounded-3xl border border-[var(--border-color)] gap-1 shadow-inner">
             <button
               onClick={() => setActiveTab("home")}
-              className={`flex items-center gap-1.5 px-3 sm:px-4 py-2 rounded-xl text-xs font-bold transition-all ${
+              className={`flex items-center gap-2 px-5 py-3 rounded-2xl text-xs sm:text-sm font-extrabold transition-all duration-300 ${
                 activeTab === "home"
-                  ? "bg-[var(--bg-card)] text-[var(--text-title)] shadow-sm"
-                  : "text-[var(--text-main)] opacity-70 hover:opacity-100"
+                  ? "bg-[var(--bg-card)] text-[var(--text-title)] shadow-md"
+                  : "text-[var(--text-main)] opacity-70 hover:opacity-100 hover:scale-105"
               }`}
             >
-              <Home className="w-3.5 h-3.5" />
+              <Home className="w-4 h-4" />
               <span>Home Hub</span>
             </button>
             <button
               onClick={() => setActiveTab("focus")}
-              className={`flex items-center gap-1.5 px-3 sm:px-4 py-2 rounded-xl text-xs font-bold transition-all ${
+              className={`flex items-center gap-2 px-5 py-3 rounded-2xl text-xs sm:text-sm font-extrabold transition-all duration-300 ${
                 activeTab === "focus"
-                  ? "bg-[var(--bg-card)] text-[var(--text-title)] shadow-sm"
-                  : "text-[var(--text-main)] opacity-70 hover:opacity-100"
+                  ? "bg-[var(--bg-card)] text-[var(--text-title)] shadow-md"
+                  : "text-[var(--text-main)] opacity-70 hover:opacity-100 hover:scale-105"
               }`}
             >
-              <Terminal className="w-3.5 h-3.5" />
+              <Terminal className="w-4 h-4" />
               <span>Focus Room</span>
             </button>
             <button
               onClick={() => setActiveTab("memories")}
-              className={`flex items-center gap-1.5 px-3 sm:px-4 py-2 rounded-xl text-xs font-bold transition-all ${
+              className={`flex items-center gap-2 px-5 py-3 rounded-2xl text-xs sm:text-sm font-extrabold transition-all duration-300 ${
                 activeTab === "memories"
-                  ? "bg-[var(--bg-card)] text-[var(--text-title)] shadow-sm"
-                  : "text-[var(--text-main)] opacity-70 hover:opacity-100"
+                  ? "bg-[var(--bg-card)] text-[var(--text-title)] shadow-md"
+                  : "text-[var(--text-main)] opacity-70 hover:opacity-100 hover:scale-105"
               }`}
             >
-              <ImageIcon className="w-3.5 h-3.5" />
+              <ImageIcon className="w-4 h-4" />
               <span>Memories Vault</span>
             </button>
             <button
               onClick={() => setActiveTab("support")}
-              className={`flex items-center gap-1.5 px-3 sm:px-4 py-2 rounded-xl text-xs font-bold transition-all ${
+              className={`flex items-center gap-2 px-5 py-3 rounded-2xl text-xs sm:text-sm font-extrabold transition-all duration-300 ${
                 activeTab === "support"
-                  ? "bg-[var(--bg-card)] text-[var(--text-title)] shadow-sm"
-                  : "text-[var(--text-main)] opacity-70 hover:opacity-100"
+                  ? "bg-[var(--bg-card)] text-[var(--text-title)] shadow-md"
+                  : "text-[var(--text-main)] opacity-70 hover:opacity-100 hover:scale-105"
               }`}
             >
-              <MessageSquare className="w-3.5 h-3.5" />
+              <MessageSquare className="w-4 h-4" />
               <span>Support Desk</span>
             </button>
           </nav>
@@ -640,35 +639,36 @@ export default function SiblingStudyDashboard() {
           <button
             onClick={() => setTheme(theme === "light" ? "dark" : "light")}
             title="Toggle Light/Dark Theme"
-            className="p-3 bg-[var(--bg-primary)] hover:bg-[var(--bg-card)] border border-[var(--border-color)] text-[var(--text-title)] rounded-2xl shadow-inner transition active:scale-95 shrink-0"
+            className="p-3.5 bg-[var(--bg-primary)] hover:bg-[var(--bg-card)] border border-[var(--border-color)] text-[var(--text-title)] rounded-2xl shadow-inner transition duration-300 hover:scale-105 active:scale-95 shrink-0"
           >
-            {theme === "light" ? <Moon className="w-4 h-4" /> : <Sun className="w-4 h-4 text-amber-400" />}
+            {theme === "light" ? <Moon className="w-5 h-5" /> : <Sun className="w-5 h-5 text-amber-400" />}
           </button>
         </div>
       </header>
 
       {/* --- CONTENT CONTAINER WITH TAB ROUTING --- */}
-      <main className="w-full max-w-5xl px-4 mt-6 sm:mt-8 relative z-20 flex-1 flex flex-col">
+      <main className="w-full max-w-[1400px] mt-8 relative z-20 flex-1 flex flex-col">
         
         {/* --- TAB 1: WELCOME & SETUP HUB --- */}
         {activeTab === "home" && (
-          <div className="fade-in-tab flex flex-col gap-6">
+          <div className="fade-in-tab flex flex-col gap-8">
             
             {/* Split layout: Intro card & Config form */}
-            <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-stretch">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
               
               {/* Intro Welcome Card */}
-              <div className="md:col-span-7 bg-[var(--bg-card)] border border-[var(--border-color)] rounded-3xl p-6 sm:p-8 shadow-[var(--card-shadow)] flex flex-col justify-between backdrop-blur-md">
+              <div className="lg:col-span-8 bg-[var(--bg-card)] border border-[var(--border-color)] rounded-[2.5rem] p-8 sm:p-12 shadow-[var(--card-shadow)] flex flex-col justify-between backdrop-blur-md relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-rose-500/5 rounded-full blur-2xl pointer-events-none" />
                 <div>
-                  <span className="text-[10px] font-mono tracking-wider text-[var(--color-accent)] font-bold uppercase block mb-3">
-                    Raksha Bandhan Special Package
+                  <span className="text-xs font-mono tracking-widest text-[var(--color-accent)] font-bold uppercase block mb-4">
+                    ✨ Raksha Bandhan Commemorative Project
                   </span>
-                  <h2 className="text-xl sm:text-2xl font-black text-[var(--text-title)] tracking-tight mb-4 flex items-center gap-2">
+                  <h2 className="text-2xl sm:text-4xl font-black text-[var(--text-title)] tracking-tight mb-6 flex items-center gap-3">
                     Why I Built This For You
-                    <Sparkles className="w-5 h-5 text-amber-500 fill-amber-500" />
+                    <Sparkles className="w-7 h-7 text-amber-500 fill-amber-500 animate-bounce" />
                   </h2>
-                  <div className="text-sm text-[var(--text-main)] leading-relaxed space-y-4 font-sans opacity-95">
-                    <p className="font-semibold text-rose-500 dark:text-rose-400">Hey Didi,</p>
+                  <div className="text-base sm:text-lg text-[var(--text-main)] leading-relaxed space-y-5 font-sans opacity-95">
+                    <p className="font-extrabold text-rose-500 dark:text-rose-400 text-xl">Hey Didi,</p>
                     <p>
                       I know medical school rotations are demanding, clinical postings are exhausting, and the vivas are stressful. 
                       Since you are studying in <strong>Mathura</strong> and I am in <strong>Lucknow</strong>, I wanted to engineer 
@@ -678,51 +678,52 @@ export default function SiblingStudyDashboard() {
                       This is your personal <strong>B.Tech remote care station</strong>. It provides study ambient loops, a custom circular Pomodoro timer, 
                       caffeine status tracking, and a photo deck for family memories.
                     </p>
-                    <p className="font-semibold italic text-slate-800 dark:text-slate-100">
-                      "Happy studying! Even from Lucknow, B.Tech support is always on call." ❤️
-                    </p>
+                    <div className="signature-font text-4xl text-rose-500 dark:text-rose-400 mt-8 rotate-[-1.5deg] leading-tight pt-2">
+                      Happy studying! Support is always on call.<br />
+                      — Your Brother ❤️
+                    </div>
                   </div>
                 </div>
 
-                <div className="mt-8 flex gap-3 border-t border-[var(--border-color)] pt-5">
+                <div className="mt-10 flex gap-4 border-t border-[var(--border-color)] pt-8">
                   <button
                     onClick={() => setActiveTab("focus")}
-                    className="flex-1 py-3 px-6 bg-gradient-to-r from-rose-500 to-rose-600 hover:from-rose-400 hover:to-rose-500 text-white rounded-2xl text-xs font-bold shadow-lg shadow-rose-500/10 transition active:scale-95 flex items-center justify-center gap-2"
+                    className="flex-1 py-4 px-8 bg-gradient-to-r from-rose-500 to-rose-600 hover:from-rose-400 hover:to-rose-500 text-white rounded-2xl text-sm font-bold shadow-xl shadow-rose-500/10 transition duration-300 hover:scale-[1.01] active:scale-95 flex items-center justify-center gap-2"
                   >
                     <span>Launch Focus Terminal</span>
-                    <Terminal className="w-4 h-4" />
+                    <Terminal className="w-5 h-5" />
                   </button>
                 </div>
               </div>
 
               {/* Custom Settings Config Box */}
-              <div className="md:col-span-5 bg-[var(--bg-card)] border border-[var(--border-color)] rounded-3xl p-6 shadow-[var(--card-shadow)] flex flex-col justify-between backdrop-blur-md">
+              <div className="lg:col-span-4 bg-[var(--bg-card)] border border-[var(--border-color)] rounded-[2.5rem] p-8 shadow-[var(--card-shadow)] flex flex-col justify-between backdrop-blur-md">
                 <div>
-                  <h3 className="text-sm font-bold text-[var(--text-title)] mb-1 flex items-center gap-2">
-                    <Terminal className="w-4 h-4 text-cyan-500" />
+                  <h3 className="text-lg font-bold text-[var(--text-title)] mb-1.5 flex items-center gap-2">
+                    <Terminal className="w-5 h-5 text-cyan-500" />
                     Dashboard Config Desk
                   </h3>
-                  <p className="text-[11px] text-[var(--text-main)] opacity-70 mb-5">
+                  <p className="text-xs text-[var(--text-main)] opacity-70 mb-6">
                     Personalize your dashboard values. Everything is saved locally in your browser.
                   </p>
 
                   {isEditingSettings ? (
-                    <form onSubmit={handleSaveSettings} className="space-y-4">
+                    <form onSubmit={handleSaveSettings} className="space-y-5">
                       <div>
-                        <label className="text-[10px] font-mono font-bold text-[var(--text-title)] uppercase block mb-1">
+                        <label className="text-[10px] font-mono font-extrabold text-[var(--text-title)] uppercase block mb-1.5 tracking-wider">
                           Sister's Name
                         </label>
                         <input
                           type="text"
                           value={nameInput}
                           onChange={(e) => setNameInput(e.target.value)}
-                          className="w-full bg-[var(--bg-primary)] border border-[var(--border-color)] rounded-xl px-3 py-2 text-xs text-[var(--text-title)] outline-none focus:border-[var(--color-accent)]"
+                          className="w-full bg-[var(--bg-primary)] border border-[var(--border-color)] rounded-2xl px-4 py-3 text-xs sm:text-sm text-[var(--text-title)] outline-none focus:ring-2 focus:ring-[var(--color-accent)] focus:border-transparent transition-all"
                           maxLength={12}
                         />
                       </div>
 
                       <div>
-                        <label className="text-[10px] font-mono font-bold text-[var(--text-title)] uppercase block mb-1">
+                        <label className="text-[10px] font-mono font-extrabold text-[var(--text-title)] uppercase block mb-1.5 tracking-wider">
                           Brother's WhatsApp (e.g. 919876543210)
                         </label>
                         <input
@@ -730,73 +731,73 @@ export default function SiblingStudyDashboard() {
                           value={whatsappInput}
                           onChange={(e) => setWhatsappInput(e.target.value)}
                           placeholder="Include country code (no +)"
-                          className="w-full bg-[var(--bg-primary)] border border-[var(--border-color)] rounded-xl px-3 py-2 text-xs text-[var(--text-title)] outline-none focus:border-[var(--color-accent)]"
+                          className="w-full bg-[var(--bg-primary)] border border-[var(--border-color)] rounded-2xl px-4 py-3 text-xs sm:text-sm text-[var(--text-title)] outline-none focus:ring-2 focus:ring-[var(--color-accent)] focus:border-transparent transition-all"
                         />
-                        <span className="text-[9px] text-slate-400 block mt-1">Used to dispatch remote requests</span>
+                        <span className="text-[10px] text-slate-400 block mt-1">Used to dispatch remote requests</span>
                       </div>
 
                       <div>
-                        <label className="text-[10px] font-mono font-bold text-[var(--text-title)] uppercase block mb-1">
+                        <label className="text-[10px] font-mono font-extrabold text-[var(--text-title)] uppercase block mb-1.5 tracking-wider">
                           Shared Google Drive link
                         </label>
                         <input
                           type="text"
                           value={gdriveInput}
                           onChange={(e) => setGDriveInput(e.target.value)}
-                          className="w-full bg-[var(--bg-primary)] border border-[var(--border-color)] rounded-xl px-3 py-2 text-xs text-[var(--text-title)] outline-none focus:border-[var(--color-accent)]"
+                          className="w-full bg-[var(--bg-primary)] border border-[var(--border-color)] rounded-2xl px-4 py-3 text-xs sm:text-sm text-[var(--text-title)] outline-none focus:ring-2 focus:ring-[var(--color-accent)] focus:border-transparent transition-all"
                         />
                       </div>
 
                       <div>
-                        <label className="text-[10px] font-mono font-bold text-[var(--text-title)] uppercase block mb-1">
+                        <label className="text-[10px] font-mono font-extrabold text-[var(--text-title)] uppercase block mb-1.5 tracking-wider">
                           Deployment Link (For QR generation)
                         </label>
                         <input
                           type="text"
                           value={qrUrlInput}
                           onChange={(e) => setQrUrlInput(e.target.value)}
-                          className="w-full bg-[var(--bg-primary)] border border-[var(--border-color)] rounded-xl px-3 py-2 text-xs text-[var(--text-title)] outline-none focus:border-[var(--color-accent)]"
+                          className="w-full bg-[var(--bg-primary)] border border-[var(--border-color)] rounded-2xl px-4 py-3 text-xs sm:text-sm text-[var(--text-title)] outline-none focus:ring-2 focus:ring-[var(--color-accent)] focus:border-transparent transition-all"
                         />
                       </div>
 
                       <div className="flex gap-2 pt-2">
                         <button
                           type="submit"
-                          className="flex-1 py-2 px-3 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs rounded-xl transition"
+                          className="flex-1 py-3 px-4 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs sm:text-sm rounded-xl transition shadow-md active:scale-95"
                         >
                           Save Config
                         </button>
                         <button
                           type="button"
                           onClick={() => setIsEditingSettings(false)}
-                          className="py-2 px-3 bg-[var(--bg-primary)] border border-[var(--border-color)] text-[var(--text-title)] text-xs rounded-xl transition"
+                          className="py-3 px-4 bg-[var(--bg-primary)] border border-[var(--border-color)] text-[var(--text-title)] text-xs sm:text-sm rounded-xl transition hover:bg-[var(--bg-card)]"
                         >
                           Cancel
                         </button>
                       </div>
                     </form>
                   ) : (
-                    <div className="space-y-3.5 text-xs text-[var(--text-main)]">
-                      <div className="bg-[var(--bg-primary)] border border-[var(--border-color)] p-3 rounded-2xl flex items-center justify-between">
+                    <div className="space-y-4 text-xs sm:text-sm text-[var(--text-main)]">
+                      <div className="bg-[var(--bg-primary)] border border-[var(--border-color)] p-4 rounded-2xl flex items-center justify-between shadow-inner">
                         <div>
-                          <span className="text-[10px] text-slate-400 font-mono block">Sister Identity</span>
-                          <span className="font-bold text-[var(--text-title)]">Dr. {sisterName}</span>
+                          <span className="text-[10px] text-slate-400 font-mono block tracking-wider uppercase">Sister Identity</span>
+                          <span className="font-bold text-[var(--text-title)] text-sm">Dr. {sisterName}</span>
                         </div>
                       </div>
 
-                      <div className="bg-[var(--bg-primary)] border border-[var(--border-color)] p-3 rounded-2xl flex items-center justify-between">
+                      <div className="bg-[var(--bg-primary)] border border-[var(--border-color)] p-4 rounded-2xl flex items-center justify-between shadow-inner">
                         <div>
-                          <span className="text-[10px] text-slate-400 font-mono block">WhatsApp Link</span>
-                          <span className="font-mono font-bold text-[var(--text-title)] truncate max-w-[200px] block">
+                          <span className="text-[10px] text-slate-400 font-mono block tracking-wider uppercase">WhatsApp Link</span>
+                          <span className="font-mono font-bold text-[var(--text-title)] truncate max-w-[220px] block text-sm">
                             {brotherWhatsApp || "Not Configured ⚠️"}
                           </span>
                         </div>
                       </div>
 
-                      <div className="bg-[var(--bg-primary)] border border-[var(--border-color)] p-3 rounded-2xl flex items-center justify-between">
+                      <div className="bg-[var(--bg-primary)] border border-[var(--border-color)] p-4 rounded-2xl flex items-center justify-between shadow-inner">
                         <div>
-                          <span className="text-[10px] text-slate-400 font-mono block">Drive Album</span>
-                          <span className="font-mono font-bold text-[var(--text-title)] truncate max-w-[200px] block">
+                          <span className="text-[10px] text-slate-400 font-mono block tracking-wider uppercase">Drive Album</span>
+                          <span className="font-mono font-bold text-[var(--text-title)] truncate max-w-[220px] block text-sm">
                             {gdriveLink}
                           </span>
                         </div>
@@ -810,7 +811,7 @@ export default function SiblingStudyDashboard() {
                           setQrUrlInput(qrUrl);
                           setIsEditingSettings(true);
                         }}
-                        className="w-full py-2.5 bg-[var(--bg-primary)] hover:bg-[var(--bg-card)] border border-[var(--border-color)] rounded-xl text-xs font-bold text-[var(--text-title)] transition"
+                        className="w-full py-3 bg-[var(--bg-primary)] hover:bg-[var(--bg-card)] border border-[var(--border-color)] rounded-2xl text-xs sm:text-sm font-extrabold text-[var(--text-title)] transition shadow-sm"
                       >
                         Adjust Setup Details
                       </button>
@@ -818,7 +819,7 @@ export default function SiblingStudyDashboard() {
                   )}
                 </div>
 
-                <div className="border-t border-[var(--border-color)] pt-4 mt-6 text-center text-[10px] text-slate-400 font-mono">
+                <div className="border-t border-[var(--border-color)] pt-4 mt-6 text-center text-[10px] text-slate-400 font-mono uppercase tracking-widest">
                   B.Tech configuration files: OK
                 </div>
               </div>
@@ -826,75 +827,75 @@ export default function SiblingStudyDashboard() {
             </div>
 
             {/* Features Guide Grid (Visual explanation cards) */}
-            <div className="bg-[var(--bg-card)] border border-[var(--border-color)] rounded-3xl p-6 sm:p-8 shadow-[var(--card-shadow)] backdrop-blur-md">
-              <h3 className="text-base font-bold text-[var(--text-title)] tracking-tight mb-5 flex items-center gap-2">
-                <BookOpen className="w-5 h-5 text-purple-500" />
+            <div className="bg-[var(--bg-card)] border border-[var(--border-color)] rounded-[2.5rem] p-8 sm:p-10 shadow-[var(--card-shadow)] backdrop-blur-md">
+              <h3 className="text-lg font-bold text-[var(--text-title)] tracking-tight mb-6 flex items-center gap-2">
+                <BookOpen className="w-6 h-6 text-purple-500 animate-pulse" />
                 Terminal Operational Guide
               </h3>
               
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 
-                <div className="bg-[var(--bg-primary)] border border-[var(--border-color)] p-5 rounded-2xl flex flex-col justify-between">
+                <div className="bg-[var(--bg-primary)] border border-[var(--border-color)] p-6 rounded-[1.8rem] flex flex-col justify-between hover:border-rose-400/50 hover:shadow-lg transition-all duration-300">
                   <div>
-                    <div className="w-8 h-8 rounded-lg bg-rose-500/10 text-rose-500 flex items-center justify-center font-bold mb-3 text-sm">1</div>
-                    <h4 className="text-xs font-extrabold text-[var(--text-title)] mb-1 uppercase font-mono">Focus Timer</h4>
-                    <p className="text-[11px] text-[var(--text-main)] leading-relaxed">
+                    <div className="w-10 h-10 rounded-xl bg-rose-500/10 text-rose-500 flex items-center justify-center font-bold mb-4 text-sm shadow-sm">1</div>
+                    <h4 className="text-xs font-extrabold text-[var(--text-title)] mb-2 uppercase font-mono tracking-wider">Focus Timer</h4>
+                    <p className="text-xs text-[var(--text-main)] leading-relaxed opacity-90">
                       A rigid 50-minute study segment locked with 10-minute breaks to optimize memory retention based on high-yield models.
                     </p>
                   </div>
                   <button 
                     onClick={() => setActiveTab("focus")} 
-                    className="text-[10px] text-rose-500 font-bold hover:underline text-left mt-4"
+                    className="text-xs text-rose-500 font-bold hover:underline text-left mt-5 flex items-center gap-1"
                   >
-                    Open Timer &rarr;
+                    <span>Open Timer</span> &rarr;
                   </button>
                 </div>
 
-                <div className="bg-[var(--bg-primary)] border border-[var(--border-color)] p-5 rounded-2xl flex flex-col justify-between">
+                <div className="bg-[var(--bg-primary)] border border-[var(--border-color)] p-6 rounded-[1.8rem] flex flex-col justify-between hover:border-cyan-400/50 hover:shadow-lg transition-all duration-300">
                   <div>
-                    <div className="w-8 h-8 rounded-lg bg-cyan-500/10 text-cyan-500 flex items-center justify-center font-bold mb-3 text-sm">2</div>
-                    <h4 className="text-xs font-extrabold text-[var(--text-title)] mb-1 uppercase font-mono">Soundscape</h4>
-                    <p className="text-[11px] text-[var(--text-main)] leading-relaxed">
+                    <div className="w-10 h-10 rounded-xl bg-cyan-500/10 text-cyan-500 flex items-center justify-center font-bold mb-4 text-sm shadow-sm">2</div>
+                    <h4 className="text-xs font-extrabold text-[var(--text-title)] mb-2 uppercase font-mono tracking-wider">Soundscape</h4>
+                    <p className="text-xs text-[var(--text-main)] leading-relaxed opacity-90">
                       Toggle ambient sounds or lo-fi streams. Use the custom synthesiser to simulate ward equipment cooling hum & ECG heart monitor beats.
                     </p>
                   </div>
                   <button 
                     onClick={() => setActiveTab("focus")} 
-                    className="text-[10px] text-cyan-500 font-bold hover:underline text-left mt-4"
+                    className="text-xs text-cyan-500 font-bold hover:underline text-left mt-5 flex items-center gap-1"
                   >
-                    Select Tracks &rarr;
+                    <span>Select Tracks</span> &rarr;
                   </button>
                 </div>
 
-                <div className="bg-[var(--bg-primary)] border border-[var(--border-color)] p-5 rounded-2xl flex flex-col justify-between">
+                <div className="bg-[var(--bg-primary)] border border-[var(--border-color)] p-6 rounded-[1.8rem] flex flex-col justify-between hover:border-purple-400/50 hover:shadow-lg transition-all duration-300">
                   <div>
-                    <div className="w-8 h-8 rounded-lg bg-purple-500/10 text-purple-500 flex items-center justify-center font-bold mb-3 text-sm">3</div>
-                    <h4 className="text-xs font-extrabold text-[var(--text-title)] mb-1 uppercase font-mono">Memories Box</h4>
-                    <p className="text-[11px] text-[var(--text-main)] leading-relaxed">
+                    <div className="w-10 h-10 rounded-xl bg-purple-500/10 text-purple-500 flex items-center justify-center font-bold mb-4 text-sm shadow-sm">3</div>
+                    <h4 className="text-xs font-extrabold text-[var(--text-title)] mb-2 uppercase font-mono tracking-wider">Memories Box</h4>
+                    <p className="text-xs text-[var(--text-main)] leading-relaxed opacity-90">
                       Drag & drop childhood pictures. Saved locally inside the browser's IndexedDB so they load immediately on opening.
                     </p>
                   </div>
                   <button 
                     onClick={() => setActiveTab("memories")} 
-                    className="text-[10px] text-purple-500 font-bold hover:underline text-left mt-4"
+                    className="text-xs text-purple-500 font-bold hover:underline text-left mt-5 flex items-center gap-1"
                   >
-                    Upload Photo &rarr;
+                    <span>Upload Photo</span> &rarr;
                   </button>
                 </div>
 
-                <div className="bg-[var(--bg-primary)] border border-[var(--border-color)] p-5 rounded-2xl flex flex-col justify-between">
+                <div className="bg-[var(--bg-primary)] border border-[var(--border-color)] p-6 rounded-[1.8rem] flex flex-col justify-between hover:border-emerald-400/50 hover:shadow-lg transition-all duration-300">
                   <div>
-                    <div className="w-8 h-8 rounded-lg bg-emerald-500/10 text-emerald-500 flex items-center justify-center font-bold mb-3 text-sm">4</div>
-                    <h4 className="text-xs font-extrabold text-[var(--text-title)] mb-1 uppercase font-mono">Remote Support</h4>
-                    <p className="text-[11px] text-[var(--text-main)] leading-relaxed">
+                    <div className="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-500 flex items-center justify-center font-bold mb-4 text-sm shadow-sm">4</div>
+                    <h4 className="text-xs font-extrabold text-[var(--text-title)] mb-2 uppercase font-mono tracking-wider">Remote Support</h4>
+                    <p className="text-xs text-[var(--text-main)] leading-relaxed opacity-90">
                       Request snack treats, schedule debugging Zoom calls, or ask for motivation. Converts requests into direct WhatsApp triggers.
                     </p>
                   </div>
                   <button 
                     onClick={() => setActiveTab("support")} 
-                    className="text-[10px] text-emerald-500 font-bold hover:underline text-left mt-4"
+                    className="text-xs text-emerald-500 font-bold hover:underline text-left mt-5 flex items-center gap-1"
                   >
-                    Submit Ticket &rarr;
+                    <span>Submit Ticket</span> &rarr;
                   </button>
                 </div>
 
@@ -904,180 +905,182 @@ export default function SiblingStudyDashboard() {
           </div>
         )}
 
-        {/* --- TAB 2: FOCUS ROOM --- */}
+        {/* --- TAB 2: FOCUS ROOM (WIDESCREEN 3-COLUMN LAYOUT) --- */}
         {activeTab === "focus" && (
-          <div className="fade-in-tab grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+          <div className="fade-in-tab grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
             
-            {/* Left side: Clock Progress Visual */}
-            <div className="lg:col-span-7 flex flex-col gap-6">
+            {/* Column 1: Pomodoro Clock Block (Span 5) */}
+            <div className="lg:col-span-5 bg-[var(--bg-card)] border border-[var(--border-color)] rounded-[2.5rem] p-8 shadow-[var(--card-shadow)] flex flex-col items-center relative overflow-hidden backdrop-blur-md min-h-[500px] justify-between">
+              <div className={`absolute -top-24 -right-24 w-56 h-56 rounded-full blur-3xl pointer-events-none transition-all duration-700 ${mode === "study" ? "bg-rose-500/5" : "bg-cyan-500/5"}`} />
               
-              {/* Pomodoro block */}
-              <div className="bg-[var(--bg-card)] border border-[var(--border-color)] rounded-3xl p-6 sm:p-8 shadow-[var(--card-shadow)] flex flex-col items-center relative overflow-hidden backdrop-blur-md">
-                <div className={`absolute -top-24 -right-24 w-52 h-52 rounded-full blur-3xl pointer-events-none transition-all duration-700 ${mode === "study" ? "bg-rose-500/5" : "bg-cyan-500/5"}`} />
-                
-                <div className="flex items-center justify-between w-full mb-6 border-b border-[var(--border-color)] pb-4">
-                  <h2 className="text-xs font-bold tracking-wider text-[var(--text-main)] font-mono uppercase flex items-center gap-2">
-                    <Stethoscope className="w-4 h-4 text-rose-500 animate-pulse" />
-                    Med Study Rotation Clock
-                  </h2>
+              <div className="flex items-center justify-between w-full border-b border-[var(--border-color)] pb-4">
+                <h2 className="text-xs font-bold tracking-wider text-[var(--text-main)] font-mono uppercase flex items-center gap-2">
+                  <Stethoscope className="w-4 h-4 text-rose-500 animate-pulse" />
+                  Rotation Clock
+                </h2>
 
-                  <div className="flex bg-[var(--bg-primary)] p-1 rounded-xl border border-[var(--border-color)]">
-                    <button
-                      onClick={() => switchMode("study")}
-                      className={`px-3 py-1.5 rounded-lg text-xs font-bold transition ${
-                        mode === "study"
-                          ? "bg-rose-500/10 text-rose-500 border border-rose-500/20"
-                          : "text-[var(--text-main)] opacity-70 hover:opacity-100"
-                      }`}
-                    >
-                      Study (50m)
-                    </button>
-                    <button
-                      onClick={() => switchMode("break")}
-                      className={`px-3 py-1.5 rounded-lg text-xs font-bold transition ${
-                        mode === "break"
-                          ? "bg-cyan-500/10 text-cyan-500 border border-cyan-500/20"
-                          : "text-[var(--text-main)] opacity-70 hover:opacity-100"
-                      }`}
-                    >
-                      Break (10m)
-                    </button>
-                  </div>
-                </div>
-
-                {/* SVG Countdown */}
-                <div className="relative flex items-center justify-center my-6">
-                  <svg className="w-56 h-56 transform -rotate-90">
-                    <circle
-                      cx="112"
-                      cy="112"
-                      r="50"
-                      className="stroke-[var(--bg-primary)] fill-transparent"
-                      strokeWidth="5"
-                    />
-                    <circle
-                      cx="112"
-                      cy="112"
-                      r="50"
-                      className={`fill-transparent transition-all duration-300 ${mode === "study" ? "stroke-rose-500" : "stroke-cyan-500"}`}
-                      strokeWidth="5"
-                      strokeDasharray="314"
-                      strokeDashoffset={strokeDashoffset}
-                      strokeLinecap="round"
-                    />
-                  </svg>
-                  <div className="absolute flex flex-col items-center">
-                    <div className="text-4xl sm:text-5xl font-mono font-black tracking-tighter text-[var(--text-title)] select-none">
-                      {formatTime(timeLeft)}
-                    </div>
-                    <span className="text-[10px] uppercase tracking-widest text-slate-400 font-mono mt-1">
-                      {mode === "study" ? "Active Duty" : "Relaxation"}
-                    </span>
-                  </div>
-                </div>
-
-                {/* Controls */}
-                <div className="flex items-center gap-4 mt-4">
+                <div className="flex bg-[var(--bg-primary)] p-1 rounded-xl border border-[var(--border-color)] shadow-inner">
                   <button
-                    onClick={() => setIsRunning(!isRunning)}
-                    className={`flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl font-bold text-sm shadow-md transition active:scale-95 ${
-                      isRunning
-                        ? "bg-amber-500 hover:bg-amber-400 text-white"
-                        : mode === "study"
-                        ? "bg-gradient-to-r from-rose-500 to-rose-600 text-white shadow-rose-500/10"
-                        : "bg-gradient-to-r from-cyan-500 to-cyan-600 text-white shadow-cyan-500/10"
+                    onClick={() => switchMode("study")}
+                    className={`px-3 py-1.5 rounded-lg text-xs font-extrabold transition ${
+                      mode === "study"
+                        ? "bg-rose-500/10 text-rose-500 border border-rose-500/20"
+                        : "text-[var(--text-main)] opacity-70 hover:opacity-100"
                     }`}
                   >
-                    {isRunning ? <Pause className="w-4 h-4 fill-current" /> : <Play className="w-4 h-4 fill-current" />}
-                    <span>{isRunning ? "Pause" : "Start Session"}</span>
+                    Study (50m)
                   </button>
-
                   <button
-                    onClick={resetTimer}
-                    title="Reset Timer"
-                    className="p-3.5 rounded-xl bg-[var(--bg-primary)] hover:bg-[var(--bg-card)] border border-[var(--border-color)] text-[var(--text-title)] transition"
+                    onClick={() => switchMode("break")}
+                    className={`px-3 py-1.5 rounded-lg text-xs font-extrabold transition ${
+                      mode === "break"
+                        ? "bg-cyan-500/10 text-cyan-500 border border-cyan-500/20"
+                        : "text-[var(--text-main)] opacity-70 hover:opacity-100"
+                    }`}
                   >
-                    <RotateCcw className="w-4 h-4" />
+                    Break (10m)
                   </button>
                 </div>
               </div>
 
+              {/* Enlarged Circle Timer */}
+              <div className="relative flex items-center justify-center my-8">
+                <svg className="w-64 h-64 transform -rotate-90">
+                  <circle
+                    cx="128"
+                    cy="128"
+                    r="58"
+                    className="stroke-[var(--bg-primary)] fill-transparent"
+                    strokeWidth="6"
+                  />
+                  <circle
+                    cx="128"
+                    cy="128"
+                    r="58"
+                    className={`fill-transparent transition-all duration-300 ${mode === "study" ? "stroke-rose-500" : "stroke-cyan-500"}`}
+                    strokeWidth="6"
+                    strokeDasharray="364"
+                    strokeDashoffset={strokeDashoffset}
+                    strokeLinecap="round"
+                  />
+                </svg>
+                <div className="absolute flex flex-col items-center">
+                  <div className="text-5xl font-mono font-black tracking-tighter text-[var(--text-title)] select-none">
+                    {formatTime(timeLeft)}
+                  </div>
+                  <span className="text-[10px] uppercase tracking-widest text-slate-400 font-mono mt-1.5 font-bold">
+                    {mode === "study" ? "Active Duty" : "Relaxation"}
+                  </span>
+                </div>
+              </div>
+
+              {/* Controls */}
+              <div className="flex items-center gap-4 w-full px-2">
+                <button
+                  onClick={() => setIsRunning(!isRunning)}
+                  className={`flex-1 flex items-center justify-center gap-2 py-4 rounded-2xl font-bold text-sm shadow-lg transition duration-300 hover:scale-[1.01] active:scale-95 ${
+                    isRunning
+                      ? "bg-amber-500 hover:bg-amber-400 text-white"
+                      : mode === "study"
+                      ? "bg-gradient-to-r from-rose-500 to-rose-600 text-white shadow-rose-500/10"
+                      : "bg-gradient-to-r from-cyan-500 to-cyan-600 text-white shadow-cyan-500/10"
+                  }`}
+                >
+                  {isRunning ? <Pause className="w-4 h-4 fill-current" /> : <Play className="w-4 h-4 fill-current" />}
+                  <span>{isRunning ? "Pause Session" : "Start Session"}</span>
+                </button>
+
+                <button
+                  onClick={resetTimer}
+                  title="Reset Timer"
+                  className="p-4 rounded-2xl bg-[var(--bg-primary)] hover:bg-[var(--bg-card)] border border-[var(--border-color)] text-[var(--text-title)] transition duration-300 hover:scale-105 active:scale-95"
+                >
+                  <RotateCcw className="w-4 h-4" />
+                </button>
+              </div>
+            </div>
+
+            {/* Column 2: Soundscapes & Caffeine Units (Span 4) */}
+            <div className="lg:col-span-4 flex flex-col gap-8 min-h-[500px]">
+              
               {/* Soundscape Card */}
-              <div className="bg-[var(--bg-card)] border border-[var(--border-color)] rounded-3xl p-6 shadow-[var(--card-shadow)] backdrop-blur-md">
-                <div className="flex items-center justify-between mb-4 border-b border-[var(--border-color)] pb-3">
-                  <h3 className="text-xs font-bold tracking-wider text-[var(--text-main)] font-mono uppercase flex items-center gap-2">
-                    <Volume2 className="w-4 h-4 text-cyan-500" />
-                    Ambient Sound Waves
-                  </h3>
-                  {activeAudio !== "silent" && (
-                    <div className="flex items-end gap-0.5 h-3.5">
-                      <span className="w-0.5 bg-cyan-500 rounded dance-bar" style={{height:'60%'}} />
-                      <span className="w-0.5 bg-cyan-500 rounded dance-bar" style={{height:'100%', animationDelay:'0.1s'}} />
-                      <span className="w-0.5 bg-cyan-500 rounded dance-bar" style={{height:'40%', animationDelay:'0.2s'}} />
-                      <span className="w-0.5 bg-cyan-500 rounded dance-bar" style={{height:'85%', animationDelay:'0.3s'}} />
+              <div className="bg-[var(--bg-card)] border border-[var(--border-color)] rounded-[2.5rem] p-6 shadow-[var(--card-shadow)] backdrop-blur-md flex-1 flex flex-col justify-between">
+                <div>
+                  <div className="flex items-center justify-between mb-4 border-b border-[var(--border-color)] pb-3">
+                    <h3 className="text-xs font-bold tracking-wider text-[var(--text-main)] font-mono uppercase flex items-center gap-2">
+                      <Volume2 className="w-4 h-4 text-cyan-500" />
+                      Ambient Audio
+                    </h3>
+                    {activeAudio !== "silent" && (
+                      <div className="flex items-end gap-0.5 h-3.5">
+                        <span className="w-0.5 bg-cyan-500 rounded dance-bar" style={{height:'60%'}} />
+                        <span className="w-0.5 bg-cyan-500 rounded dance-bar" style={{height:'100%', animationDelay:'0.1s'}} />
+                        <span className="w-0.5 bg-cyan-500 rounded dance-bar" style={{height:'40%', animationDelay:'0.2s'}} />
+                        <span className="w-0.5 bg-cyan-500 rounded dance-bar" style={{height:'85%', animationDelay:'0.3s'}} />
+                      </div>
+                    )}
+                  </div>
+
+                  {audioError && (
+                    <div className="mb-4 p-3 bg-red-50 dark:bg-red-950/20 border border-red-500/20 text-red-600 dark:text-red-300 rounded-xl text-xs flex items-center gap-2">
+                      <AlertTriangle className="w-4 h-4 text-red-500 shrink-0" />
+                      <span>{audioError}</span>
                     </div>
                   )}
-                </div>
 
-                {audioError && (
-                  <div className="mb-4 p-3 bg-red-50 dark:bg-red-950/20 border border-red-500/20 text-red-600 dark:text-red-300 rounded-xl text-xs flex items-center gap-2">
-                    <AlertTriangle className="w-4 h-4 text-red-500 shrink-0" />
-                    <span>{audioError}</span>
+                  <div className="grid grid-cols-2 gap-3 mb-4">
+                    <button
+                      onClick={() => selectAudio("silent")}
+                      className={`p-3 rounded-2xl border text-xs font-bold flex flex-col items-center gap-2 transition duration-300 ${
+                        activeAudio === "silent"
+                          ? "bg-[var(--bg-primary)] border-[var(--color-secondary)] text-[var(--color-secondary)] shadow-sm scale-[0.98]"
+                          : "bg-[var(--bg-primary)] border-transparent text-[var(--text-main)] opacity-70 hover:opacity-100 hover:scale-[1.02]"
+                      }`}
+                    >
+                      <VolumeX className="w-5 h-5 text-slate-400" />
+                      <span>Silence</span>
+                    </button>
+
+                    <button
+                      onClick={() => selectAudio("lofi")}
+                      className={`p-3 rounded-2xl border text-xs font-bold flex flex-col items-center gap-2 transition duration-300 ${
+                        activeAudio === "lofi"
+                          ? "bg-[var(--bg-primary)] border-[var(--color-secondary)] text-[var(--color-secondary)] shadow-sm scale-[0.98]"
+                          : "bg-[var(--bg-primary)] border-transparent text-[var(--text-main)] opacity-70 hover:opacity-100 hover:scale-[1.02]"
+                      }`}
+                    >
+                      <Coffee className="w-5 h-5 text-amber-500" />
+                      <span>Lo-Fi Beats</span>
+                    </button>
+
+                    <button
+                      onClick={() => selectAudio("rain")}
+                      className={`p-3 rounded-2xl border text-xs font-bold flex flex-col items-center gap-2 transition duration-300 ${
+                        activeAudio === "rain"
+                          ? "bg-[var(--bg-primary)] border-[var(--color-secondary)] text-[var(--color-secondary)] shadow-sm scale-[0.98]"
+                          : "bg-[var(--bg-primary)] border-transparent text-[var(--text-main)] opacity-70 hover:opacity-100 hover:scale-[1.02]"
+                      }`}
+                    >
+                      <Stethoscope className="w-5 h-5 text-indigo-400" />
+                      <span>Rain Loop</span>
+                    </button>
+
+                    <button
+                      onClick={() => selectAudio("hospital")}
+                      className={`p-3 rounded-2xl border text-xs font-bold flex flex-col items-center gap-2 transition duration-300 ${
+                        activeAudio === "hospital"
+                          ? "bg-[var(--bg-primary)] border-[var(--color-secondary)] text-[var(--color-secondary)] shadow-sm scale-[0.98]"
+                          : "bg-[var(--bg-primary)] border-transparent text-[var(--text-main)] opacity-70 hover:opacity-100 hover:scale-[1.02]"
+                      }`}
+                    >
+                      <HeartPulse className="w-5 h-5 text-rose-500" />
+                      <span>ER Hum Synth</span>
+                    </button>
                   </div>
-                )}
-
-                <div className="grid grid-cols-2 gap-3 mb-5">
-                  <button
-                    onClick={() => selectAudio("silent")}
-                    className={`p-3 rounded-2xl border text-xs font-bold flex flex-col items-center gap-2.5 transition ${
-                      activeAudio === "silent"
-                        ? "bg-[var(--bg-primary)] border-[var(--color-secondary)] text-[var(--color-secondary)] shadow-sm"
-                        : "bg-[var(--bg-primary)] border-transparent text-[var(--text-main)] opacity-70 hover:opacity-100"
-                    }`}
-                  >
-                    <VolumeX className="w-5 h-5 text-slate-400" />
-                    <span>Silent Study</span>
-                  </button>
-
-                  <button
-                    onClick={() => selectAudio("lofi")}
-                    className={`p-3 rounded-2xl border text-xs font-bold flex flex-col items-center gap-2.5 transition ${
-                      activeAudio === "lofi"
-                        ? "bg-[var(--bg-primary)] border-[var(--color-secondary)] text-[var(--color-secondary)] shadow-sm"
-                        : "bg-[var(--bg-primary)] border-transparent text-[var(--text-main)] opacity-70 hover:opacity-100"
-                    }`}
-                  >
-                    <Coffee className="w-5 h-5 text-amber-500" />
-                    <span>Lo-Fi Beats</span>
-                  </button>
-
-                  <button
-                    onClick={() => selectAudio("rain")}
-                    className={`p-3 rounded-2xl border text-xs font-bold flex flex-col items-center gap-2.5 transition ${
-                      activeAudio === "rain"
-                        ? "bg-[var(--bg-primary)] border-[var(--color-secondary)] text-[var(--color-secondary)] shadow-sm"
-                        : "bg-[var(--bg-primary)] border-transparent text-[var(--text-main)] opacity-70 hover:opacity-100"
-                    }`}
-                  >
-                    <Stethoscope className="w-5 h-5 text-indigo-400" />
-                    <span>Soft Rain Loop</span>
-                  </button>
-
-                  <button
-                    onClick={() => selectAudio("hospital")}
-                    className={`p-3 rounded-2xl border text-xs font-bold flex flex-col items-center gap-2.5 transition ${
-                      activeAudio === "hospital"
-                        ? "bg-[var(--bg-primary)] border-[var(--color-secondary)] text-[var(--color-secondary)] shadow-sm"
-                        : "bg-[var(--bg-primary)] border-transparent text-[var(--text-main)] opacity-70 hover:opacity-100"
-                    }`}
-                  >
-                    <HeartPulse className="w-5 h-5 text-rose-500" />
-                    <span>Med ER Hum (Synth)</span>
-                  </button>
                 </div>
 
-                <div className="flex items-center gap-4 bg-[var(--bg-primary)] px-4 py-3 rounded-xl border border-[var(--border-color)]">
-                  <span className="text-[10px] text-slate-400 font-mono uppercase">Volume</span>
+                <div className="flex items-center gap-4 bg-[var(--bg-primary)] px-4 py-3.5 rounded-2xl border border-[var(--border-color)]">
+                  <span className="text-[10px] text-slate-400 font-mono uppercase tracking-wider">Vol</span>
                   <input
                     type="range"
                     min="0"
@@ -1093,22 +1096,72 @@ export default function SiblingStudyDashboard() {
                 </div>
               </div>
 
+              {/* Caffeine Level */}
+              <div className="bg-[var(--bg-card)] border border-[var(--border-color)] rounded-[2.5rem] p-6 shadow-[var(--card-shadow)] backdrop-blur-md flex flex-col justify-between">
+                <div>
+                  <div className="flex items-center justify-between mb-3">
+                    <h3 className="text-xs font-bold text-[var(--text-title)] uppercase font-mono tracking-wider flex items-center gap-2">
+                      <Coffee className="w-4 h-4 text-amber-600 animate-bounce" />
+                      Caffeine Gauge
+                    </h3>
+                    <span className="text-xs font-mono font-bold text-amber-600 bg-amber-500/10 px-2.5 py-0.5 rounded-lg border border-amber-500/20 shadow-sm">
+                      {caffeineLevel} Cups
+                    </span>
+                  </div>
+
+                  <div className="relative w-full h-3 bg-[var(--bg-primary)] border border-[var(--border-color)] rounded-full overflow-hidden mb-3 shadow-inner">
+                    <div 
+                      className="h-full bg-gradient-to-r from-amber-600 to-amber-400 transition-all duration-500"
+                      style={{ width: `${Math.min(caffeineLevel * 20, 100)}%` }}
+                    />
+                  </div>
+
+                  <p className="text-[11px] text-[var(--text-main)] font-mono mb-4 text-center opacity-85">
+                    {caffeineLevel === 0 && "Zombie Desk Mode (Need treat request)"}
+                    {caffeineLevel > 0 && caffeineLevel <= 2 && "Synapses firing. Alertness nominal."}
+                    {caffeineLevel >= 3 && caffeineLevel <= 4 && "Harrison's speedrunner mode."}
+                    {caffeineLevel >= 5 && "WARNING! Jittery surgeon. Hands shaking!"}
+                  </p>
+                </div>
+
+                <div className="flex gap-2">
+                  <button
+                    onClick={() => setCaffeineLevel((prev) => prev + 1)}
+                    className="flex-1 py-3 px-4 bg-amber-600 hover:bg-amber-500 text-white rounded-xl text-xs font-bold transition flex items-center justify-center gap-2 active:scale-95 shadow-md shadow-amber-600/10"
+                  >
+                    <Plus className="w-3.5 h-3.5" />
+                    <span>Log Cup</span>
+                  </button>
+                  <button
+                    onClick={() => {
+                      if (confirm("Send WhatsApp treat request to Lucknow?")) {
+                        dispatchWhatsAppMessage("Treat Sponsor");
+                      }
+                    }}
+                    className="py-3 px-4 bg-[var(--bg-primary)] hover:bg-[var(--bg-card)] border border-[var(--border-color)] text-[var(--text-title)] rounded-xl text-xs font-bold transition hover:scale-105 active:scale-95 flex items-center justify-center"
+                    title="Request Treat Sponsor from Brother"
+                  >
+                    Sponsor Treat 🍔
+                  </button>
+                </div>
+              </div>
+
             </div>
 
-            {/* Right side: Boost, Checklists, Caffeine levels */}
-            <div className="lg:col-span-5 flex flex-col gap-6">
+            {/* Column 3: Checklist & Daily Boost (Span 3) */}
+            <div className="lg:col-span-3 flex flex-col gap-8 min-h-[500px]">
               
               {/* Daily Boost encouragement block */}
-              <div className="bg-gradient-to-br from-rose-50 dark:from-rose-950/20 via-[var(--bg-card)] to-[var(--bg-card)] border border-[var(--border-color)] rounded-3xl p-6 shadow-[var(--card-shadow)] flex flex-col justify-between backdrop-blur-md relative overflow-hidden">
+              <div className="bg-gradient-to-br from-rose-50 dark:from-rose-950/20 via-[var(--bg-card)] to-[var(--bg-card)] border border-[var(--border-color)] rounded-[2.5rem] p-6 shadow-[var(--card-shadow)] flex flex-col justify-between backdrop-blur-md relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-24 h-24 bg-rose-500/5 rounded-full blur-2xl pointer-events-none" />
                 <div>
                   <div className="flex items-center justify-between mb-4">
-                    <span className="text-[9px] font-mono uppercase tracking-wider text-[var(--color-accent)] font-bold px-2 py-0.5 bg-rose-500/10 rounded border border-rose-500/25">
+                    <span className="text-[9px] font-mono uppercase tracking-wider text-[var(--color-accent)] font-extrabold px-2.5 py-1 bg-rose-500/10 rounded border border-rose-500/25">
                       {QUOTES[currentQuoteIndex].tag}
                     </span>
                     <Sparkles className="w-4 h-4 text-amber-500" />
                   </div>
-                  <p className="text-sm font-semibold text-[var(--text-title)] leading-relaxed italic min-h-[80px]">
+                  <p className="text-xs sm:text-sm font-semibold text-[var(--text-title)] leading-relaxed italic min-h-[96px]">
                     "{displayText}"
                   </p>
                 </div>
@@ -1116,230 +1169,193 @@ export default function SiblingStudyDashboard() {
                 <button
                   onClick={getNewQuote}
                   disabled={isDecrypting}
-                  className={`mt-4 w-full py-2.5 px-4 bg-[var(--bg-primary)] hover:bg-[var(--bg-card)] border border-[var(--border-color)] text-xs font-bold text-[var(--color-accent)] rounded-xl flex items-center justify-center gap-2 transition active:scale-95 ${
+                  className={`mt-4 w-full py-3 px-4 bg-[var(--bg-primary)] hover:bg-[var(--bg-card)] border border-[var(--border-color)] text-xs font-bold text-[var(--color-accent)] rounded-xl flex items-center justify-center gap-2 transition duration-300 active:scale-95 ${
                     isDecrypting ? "opacity-60" : ""
                   }`}
                 >
                   <Sparkles className="w-3.5 h-3.5" />
-                  <span>Dispense Encouragement</span>
+                  <span>Next Encourage</span>
                 </button>
               </div>
 
               {/* Checklist */}
-              <div className="bg-[var(--bg-card)] border border-[var(--border-color)] rounded-3xl p-6 shadow-[var(--card-shadow)] flex flex-col backdrop-blur-md">
-                <h3 className="text-xs font-bold text-[var(--text-title)] uppercase font-mono tracking-wider mb-4 flex items-center justify-between">
-                  <span className="flex items-center gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-500" />
-                    Study Rotation Goals
-                  </span>
-                  <span className="text-[10px] text-slate-400">
-                    {tasks.filter((t) => t.done).length}/{tasks.length} Resolved
-                  </span>
-                </h3>
+              <div className="bg-[var(--bg-card)] border border-[var(--border-color)] rounded-[2.5rem] p-6 shadow-[var(--card-shadow)] flex flex-col backdrop-blur-md flex-1 justify-between">
+                <div>
+                  <h3 className="text-xs font-bold text-[var(--text-title)] uppercase font-mono tracking-wider mb-4 flex items-center justify-between">
+                    <span className="flex items-center gap-2">
+                      <CheckCircle2 className="w-4 h-4 text-emerald-500 animate-pulse" />
+                      Study Goals
+                    </span>
+                    <span className="text-[10px] text-slate-400">
+                      {tasks.filter((t) => t.done).length}/{tasks.length}
+                    </span>
+                  </h3>
 
-                <div className="flex flex-col gap-2 max-h-48 overflow-y-auto pr-1">
-                  {tasks.map((task) => (
-                    <button
-                      key={task.id}
-                      onClick={() => toggleTask(task.id)}
-                      className={`w-full text-left flex items-start gap-3 p-3 rounded-xl transition border ${
-                        task.done
-                          ? "bg-[var(--bg-primary)]/50 border-[var(--border-color)] text-slate-400 line-through opacity-80"
-                          : "bg-[var(--bg-primary)] border-[var(--border-color)] text-[var(--text-title)] hover:border-slate-300 dark:hover:border-slate-700"
-                      }`}
-                    >
-                      {task.done ? (
-                        <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
-                      ) : (
-                        <Circle className="w-4 h-4 text-slate-400 shrink-0 mt-0.5" />
-                      )}
-                      <span className="text-xs leading-snug">{task.text}</span>
-                    </button>
-                  ))}
+                  <div className="flex flex-col gap-2 max-h-56 overflow-y-auto pr-1">
+                    {tasks.map((task) => (
+                      <button
+                        key={task.id}
+                        onClick={() => toggleTask(task.id)}
+                        className={`w-full text-left flex items-start gap-2.5 p-3 rounded-xl transition border ${
+                          task.done
+                            ? "bg-[var(--bg-primary)]/50 border-[var(--border-color)] text-slate-400 line-through opacity-85"
+                            : "bg-[var(--bg-primary)] border-[var(--border-color)] text-[var(--text-title)] hover:border-slate-300 dark:hover:border-slate-700"
+                        }`}
+                      >
+                        {task.done ? (
+                          <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500 shrink-0 mt-0.5" />
+                        ) : (
+                          <Circle className="w-3.5 h-3.5 text-slate-400 shrink-0 mt-0.5" />
+                        )}
+                        <span className="text-[11px] leading-snug">{task.text}</span>
+                      </button>
+                    ))}
+                  </div>
                 </div>
 
                 <form onSubmit={addTask} className="mt-4 flex gap-2">
                   <input
                     type="text"
-                    placeholder="Queue new study topic..."
+                    placeholder="Add topic..."
                     value={newTask}
                     onChange={(e) => setNewTask(e.target.value)}
                     className="flex-1 bg-[var(--bg-primary)] border border-[var(--border-color)] rounded-xl px-3 py-2 text-xs text-[var(--text-title)] placeholder:text-slate-400 focus:outline-none focus:border-[var(--color-accent)] transition-colors"
                   />
                   <button
                     type="submit"
-                    className="px-4 py-2 bg-[var(--bg-primary)] hover:bg-[var(--bg-card)] border border-[var(--border-color)] text-[var(--text-title)] rounded-xl text-xs font-bold transition active:scale-95"
+                    className="px-3 py-2 bg-[var(--bg-primary)] hover:bg-[var(--bg-card)] border border-[var(--border-color)] text-[var(--text-title)] rounded-xl text-xs font-bold transition active:scale-95"
                   >
                     Add
                   </button>
                 </form>
               </div>
 
-              {/* Caffeine Level */}
-              <div className="bg-[var(--bg-card)] border border-[var(--border-color)] rounded-3xl p-5 shadow-[var(--card-shadow)] backdrop-blur-md">
-                <div className="flex items-center justify-between mb-3">
-                  <h3 className="text-xs font-bold text-[var(--text-title)] uppercase font-mono tracking-wider flex items-center gap-2">
-                    <Coffee className="w-4 h-4 text-amber-600 animate-bounce" />
-                    Caffeine Core Monitor
-                  </h3>
-                  <span className="text-xs font-mono font-bold text-amber-600 bg-amber-500/10 px-2 py-0.5 rounded-lg border border-amber-500/20">
-                    {caffeineLevel} Cups
-                  </span>
-                </div>
-
-                <div className="relative w-full h-3 bg-[var(--bg-primary)] border border-[var(--border-color)] rounded-full overflow-hidden mb-3">
-                  <div 
-                    className="h-full bg-gradient-to-r from-amber-600 to-amber-400 transition-all duration-500"
-                    style={{ width: `${Math.min(caffeineLevel * 20, 100)}%` }}
-                  />
-                </div>
-
-                <p className="text-[10px] text-[var(--text-main)] font-mono mb-4 text-center opacity-80">
-                  {caffeineLevel === 0 && "Status: Zombie Desk Mode (Need refueling)"}
-                  {caffeineLevel > 0 && caffeineLevel <= 2 && "Status: Synapses firing. Alertness nominal."}
-                  {caffeineLevel >= 3 && caffeineLevel <= 4 && "Status: Harrison's speedrunner mode."}
-                  {caffeineLevel >= 5 && "Status: WARNING! Jittery surgeon. Hands shaking!"}
-                </p>
-
-                <div className="flex gap-2">
-                  <button
-                    onClick={() => setCaffeineLevel((prev) => prev + 1)}
-                    className="flex-1 py-2 px-3 bg-amber-600 hover:bg-amber-500 text-white rounded-xl text-xs font-bold transition flex items-center justify-center gap-2 active:scale-95"
-                  >
-                    <Plus className="w-3.5 h-3.5" />
-                    <span>Log Coffee Cup</span>
-                  </button>
-                  <button
-                    onClick={() => setCaffeineLevel(0)}
-                    className="py-2 px-3 bg-[var(--bg-primary)] border border-[var(--border-color)] text-[var(--text-title)] rounded-xl text-xs font-semibold transition hover:bg-[var(--bg-card)]"
-                  >
-                    Reset
-                  </button>
-                </div>
-              </div>
-
             </div>
 
           </div>
         )}
 
-        {/* --- TAB 3: MEMORIES VAULT --- */}
+        {/* --- TAB 3: MEMORIES VAULT (WIDE POLAROID DECK) --- */}
         {activeTab === "memories" && (
-          <div className="fade-in-tab grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+          <div className="fade-in-tab flex flex-col gap-8">
             
-            {/* Left Column: Tilted Polaroid Display */}
-            <div className="lg:col-span-5 bg-[var(--bg-card)] border border-[var(--border-color)] rounded-3xl p-6 shadow-[var(--card-shadow)] flex flex-col items-center backdrop-blur-md">
-              <h3 className="text-xs font-bold text-[var(--text-title)] uppercase font-mono tracking-wider mb-5 flex items-center gap-2">
-                <Sparkles className="w-4 h-4 text-purple-500" />
-                Featured Memory Polaroid
-              </h3>
+            {/* Split layout: Photo frames & Gallery controls */}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+              
+              {/* Polaroid Slide Deck Card (Span 6) */}
+              <div className="lg:col-span-6 bg-[var(--bg-card)] border border-[var(--border-color)] rounded-[2.5rem] p-8 shadow-[var(--card-shadow)] flex flex-col items-center justify-between backdrop-blur-md min-h-[500px]">
+                <h3 className="text-sm font-bold text-[var(--text-title)] uppercase font-mono tracking-wider mb-4 flex items-center gap-2">
+                  <Sparkles className="w-4 h-4 text-purple-500 animate-spin" style={{animationDuration: '8s'}} />
+                  Memory Slideshow Carousel
+                </h3>
 
-              {/* Polaroid Photo Frame */}
-              <div className="polaroid-frame w-full max-w-[280px] bg-white border border-slate-200 p-4 pb-8 flex flex-col items-center rounded shadow-2xl rotate-2 hover:rotate-0 transform transition-all duration-300">
-                <div className="w-full aspect-[4/3] bg-slate-900 overflow-hidden rounded border border-slate-200 flex items-center justify-center relative">
-                  {memories.length > 0 ? (
-                    <img
-                      src={memories[slideshowIndex].data}
-                      alt="Polaroid Memory"
-                      className="w-full h-full object-cover"
+                {/* Styled Polaroid Photo Display */}
+                <div className="polaroid-frame bg-white border border-slate-200 p-5 pb-10 flex flex-col items-center rounded shadow-2xl relative w-full max-w-[340px] transform hover:rotate-0 transition-all duration-300">
+                  <div className="w-full aspect-[4/3] bg-slate-900 overflow-hidden rounded border border-slate-100 flex items-center justify-center relative shadow-inner">
+                    {memories.length > 0 ? (
+                      <img
+                        src={memories[slideshowIndex].data}
+                        alt="Polaroid Memory"
+                        className="w-full h-full object-cover"
+                      />
+                    ) : (
+                      <div className="flex flex-col items-center justify-center p-6 text-center">
+                        <ImageIcon className="w-12 h-12 text-slate-600 mb-2 animate-bounce" />
+                        <span className="text-xs text-slate-400 font-mono">Vault Empty</span>
+                      </div>
+                    )}
+                  </div>
+                  <div className="mt-5 text-slate-700 font-mono text-xs text-center font-extrabold tracking-tight">
+                    {memories.length > 0 ? `Mathura 📸 Lucknow • #${slideshowIndex + 1}` : "Empty Desk"}
+                  </div>
+                </div>
+
+                {/* Open Drive Link */}
+                <div className="w-full mt-6 pt-5 border-t border-[var(--border-color)] flex flex-col gap-2">
+                  <a
+                    href={gdriveLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full py-3.5 px-6 bg-gradient-to-r from-purple-500 to-purple-600 hover:from-purple-400 hover:to-purple-500 text-white rounded-2xl text-xs sm:text-sm font-bold shadow-md transition active:scale-95 flex items-center justify-center gap-2"
+                  >
+                    <FolderOpen className="w-4 h-4" />
+                    <span>Launch Google Drive Folder Link</span>
+                    <ExternalLink className="w-3.5 h-3.5 opacity-80" />
+                  </a>
+                  <span className="text-[10px] text-slate-400 font-mono text-center truncate px-4">
+                    Drive path: {gdriveLink}
+                  </span>
+                </div>
+              </div>
+
+              {/* Upload workspace and controls (Span 6) */}
+              <div className="lg:col-span-6 flex flex-col gap-8">
+                
+                {/* Upload drag-box */}
+                <div className="bg-[var(--bg-card)] border border-[var(--border-color)] rounded-[2.5rem] p-8 shadow-[var(--card-shadow)] backdrop-blur-md">
+                  <h3 className="text-sm font-bold text-[var(--text-title)] uppercase font-mono tracking-wider mb-2 flex items-center gap-2">
+                    <ImageIcon className="w-4 h-4 text-purple-500" />
+                    Upload Workspace
+                  </h3>
+                  <p className="text-xs text-[var(--text-main)] opacity-75 mb-5">
+                    Drag and drop or select photos of you, your sister, or childhood memories. Files are saved in IndexedDB and never sent to a external server.
+                  </p>
+
+                  <label className="border-2 border-dashed border-[var(--border-color)] hover:border-purple-400 rounded-3xl p-10 flex flex-col items-center justify-center cursor-pointer transition bg-[var(--bg-primary)]/50">
+                    <Plus className="w-10 h-10 text-slate-400 mb-3 hover:text-purple-500 transition hover:scale-110" />
+                    <span className="text-xs sm:text-sm font-bold text-[var(--text-title)]">Choose Photo File</span>
+                    <span className="text-[10px] text-slate-400 font-mono mt-1">Accepts PNG, JPG (Max 2MB)</span>
+                    <input
+                      type="file"
+                      accept="image/*"
+                      onChange={handlePhotoUpload}
+                      className="hidden"
                     />
+                  </label>
+                </div>
+
+                {/* Gallery List Shelf */}
+                <div className="bg-[var(--bg-card)] border border-[var(--border-color)] rounded-[2.5rem] p-8 shadow-[var(--card-shadow)] backdrop-blur-md flex-1">
+                  <h3 className="text-sm font-bold text-[var(--text-title)] uppercase font-mono tracking-wider mb-4 flex items-center justify-between">
+                    <span>Memories Gallery Shelf ({memories.length} Photos)</span>
+                    {memories.length > 0 && <span className="text-[10px] text-slate-400">Loop Active</span>}
+                  </h3>
+
+                  {memories.length > 0 ? (
+                    <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-3 max-h-[220px] overflow-y-auto pr-1">
+                      {memories.map((img, idx) => (
+                        <div 
+                          key={img.id}
+                          onClick={() => setSlideshowIndex(idx)}
+                          className={`group relative aspect-square bg-slate-950 rounded-xl overflow-hidden cursor-pointer border-2 transition duration-300 hover:scale-105 ${
+                            idx === slideshowIndex ? "border-purple-500 scale-[0.98]" : "border-transparent opacity-85 hover:opacity-100"
+                          }`}
+                        >
+                          <img
+                            src={img.data}
+                            alt="Thumb"
+                            className="w-full h-full object-cover"
+                          />
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              removePhoto(img.id);
+                            }}
+                            title="Delete Photo"
+                            className="absolute top-1 right-1 p-1 bg-red-950/80 border border-red-500/30 text-red-400 rounded-md opacity-0 group-hover:opacity-100 hover:bg-red-900 transition-opacity"
+                          >
+                            <Trash2 className="w-3.5 h-3.5" />
+                          </button>
+                        </div>
+                      ))}
+                    </div>
                   ) : (
-                    <div className="flex flex-col items-center justify-center p-4 text-center">
-                      <ImageIcon className="w-10 h-10 text-slate-500 mb-2 animate-bounce" />
-                      <span className="text-[10px] text-slate-400 font-mono">Vault Empty</span>
+                    <div className="text-center py-12 border border-dashed border-[var(--border-color)] rounded-3xl bg-[var(--bg-primary)]/30">
+                      <p className="text-xs text-slate-400 font-mono">No images uploaded. Add some to start the deck!</p>
                     </div>
                   )}
                 </div>
-                <div className="mt-4 text-slate-700 font-mono text-[11px] text-center font-bold tracking-tight">
-                  {memories.length > 0 ? `Mathura 📸 Lucknow • #${slideshowIndex + 1}` : "No photos loaded yet"}
-                </div>
-              </div>
 
-              {/* Open shared drive Link */}
-              <div className="w-full mt-6 pt-5 border-t border-[var(--border-color)] flex flex-col gap-2.5">
-                <a
-                  href={gdriveLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full py-2.5 px-4 bg-gradient-to-r from-purple-500 to-purple-600 hover:from-purple-400 hover:to-purple-500 text-white rounded-xl text-xs font-bold shadow-md transition active:scale-95 flex items-center justify-center gap-2"
-                >
-                  <FolderOpen className="w-4 h-4" />
-                  <span>Launch Google Drive Folder</span>
-                  <ExternalLink className="w-3 h-3 opacity-80" />
-                </a>
-                <span className="text-[9px] text-slate-400 font-mono text-center">
-                  Configured URL: {gdriveLink.slice(0, 45)}...
-                </span>
-              </div>
-            </div>
-
-            {/* Right Column: Upload workspace and Grid gallery */}
-            <div className="lg:col-span-7 flex flex-col gap-6">
-              
-              {/* Image upload area */}
-              <div className="bg-[var(--bg-card)] border border-[var(--border-color)] rounded-3xl p-6 shadow-[var(--card-shadow)] backdrop-blur-md">
-                <h3 className="text-xs font-bold text-[var(--text-title)] uppercase font-mono tracking-wider mb-2 flex items-center gap-2">
-                  <ImageIcon className="w-4 h-4 text-purple-500" />
-                  Upload Memory Workspace
-                </h3>
-                <p className="text-[11px] text-[var(--text-main)] opacity-70 mb-4">
-                  Add photos of you, your brother, or family. They are stored locally on your device for absolute privacy.
-                </p>
-
-                {/* Drop Workspace */}
-                <label className="border-2 border-dashed border-[var(--border-color)] hover:border-purple-400 rounded-2xl p-8 flex flex-col items-center justify-center cursor-pointer transition bg-[var(--bg-primary)]/50">
-                  <Plus className="w-8 h-8 text-slate-400 mb-2 hover:text-purple-500 transition" />
-                  <span className="text-xs font-bold text-[var(--text-title)]">Choose Image File</span>
-                  <span className="text-[10px] text-slate-400 font-mono mt-1">Accepts PNG, JPG (Max 2MB)</span>
-                  <input
-                    type="file"
-                    accept="image/*"
-                    onChange={handlePhotoUpload}
-                    className="hidden"
-                  />
-                </label>
-              </div>
-
-              {/* Gallery Grid */}
-              <div className="bg-[var(--bg-card)] border border-[var(--border-color)] rounded-3xl p-6 shadow-[var(--card-shadow)] backdrop-blur-md flex-1">
-                <h3 className="text-xs font-bold text-[var(--text-title)] uppercase font-mono tracking-wider mb-4 flex items-center justify-between">
-                  <span>Memories Shelf ({memories.length} Photos)</span>
-                  {memories.length > 0 && <span className="text-[9px] text-slate-400">Slideshow loops active</span>}
-                </h3>
-
-                {memories.length > 0 ? (
-                  <div className="grid grid-cols-3 sm:grid-cols-4 gap-3 max-h-[220px] overflow-y-auto pr-1">
-                    {memories.map((img, idx) => (
-                      <div 
-                        key={img.id}
-                        onClick={() => setSlideshowIndex(idx)}
-                        className={`group relative aspect-square bg-slate-950 rounded-xl overflow-hidden cursor-pointer border-2 transition ${
-                          idx === slideshowIndex ? "border-purple-500 scale-[0.98]" : "border-transparent opacity-85 hover:opacity-100"
-                        }`}
-                      >
-                        <img
-                          src={img.data}
-                          alt="Thumb"
-                          className="w-full h-full object-cover"
-                        />
-                        <button
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            removePhoto(img.id);
-                          }}
-                          title="Delete Photo"
-                          className="absolute top-1 right-1 p-1 bg-red-950/80 border border-red-500/30 text-red-400 rounded-md opacity-0 group-hover:opacity-100 hover:bg-red-900 transition-opacity"
-                        >
-                          <Trash2 className="w-3 h-3" />
-                        </button>
-                      </div>
-                    ))}
-                  </div>
-                ) : (
-                  <div className="text-center py-10 border border-dashed border-[var(--border-color)] rounded-2xl bg-[var(--bg-primary)]/30">
-                    <p className="text-xs text-slate-400 font-mono">No images uploaded. Add some to start the deck!</p>
-                  </div>
-                )}
               </div>
 
             </div>
@@ -1347,30 +1363,30 @@ export default function SiblingStudyDashboard() {
           </div>
         )}
 
-        {/* --- TAB 4: SUPPORT DESK --- */}
+        {/* --- TAB 4: SUPPORT DESK (WIDESCREEN PORTAL) --- */}
         {activeTab === "support" && (
-          <div className="fade-in-tab grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+          <div className="fade-in-tab grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
             
-            {/* Left side: Raising tickets */}
-            <div className="lg:col-span-5 bg-[var(--bg-card)] border border-[var(--border-color)] rounded-3xl p-6 shadow-[var(--card-shadow)] flex flex-col justify-between backdrop-blur-md">
+            {/* Left side: Raising tickets (Span 5) */}
+            <div className="lg:col-span-5 bg-[var(--bg-card)] border border-[var(--border-color)] rounded-[2.5rem] p-8 shadow-[var(--card-shadow)] flex flex-col justify-between backdrop-blur-md">
               <div>
-                <h3 className="text-sm font-bold text-[var(--text-title)] uppercase font-mono tracking-wider mb-1 flex items-center gap-2">
-                  <Terminal className="w-4 h-4 text-emerald-500 animate-pulse" />
+                <h3 className="text-lg font-bold text-[var(--text-title)] uppercase font-mono tracking-wider mb-2 flex items-center gap-2">
+                  <Terminal className="w-5 h-5 text-emerald-500 animate-pulse" />
                   Remote Sibling Ticket Desk
                 </h3>
-                <p className="text-[11px] text-[var(--text-main)] opacity-70 mb-4">
-                  Raise a ticket to your brother in Lucknow. Submitting will format and WhatsApp the request directly to him!
+                <p className="text-xs text-[var(--text-main)] opacity-70 mb-6">
+                  Raise a support ticket directly to your brother in Lucknow. Submitting will format and WhatsApp the request directly to him!
                 </p>
 
-                <form onSubmit={addTicket} className="space-y-4">
+                <form onSubmit={addTicket} className="space-y-5">
                   <div>
-                    <label className="text-[10px] font-mono font-bold text-[var(--text-title)] uppercase block mb-1">
+                    <label className="text-[10px] font-mono font-extrabold text-[var(--text-title)] uppercase block mb-1.5 tracking-wider">
                       Support Request Category
                     </label>
                     <select
                       value={ticketType}
                       onChange={(e) => setTicketType(e.target.value)}
-                      className="w-full bg-[var(--bg-primary)] border border-[var(--border-color)] rounded-xl px-3 py-2 text-xs text-[var(--text-title)] outline-none focus:border-[var(--color-accent)] cursor-pointer"
+                      className="w-full bg-[var(--bg-primary)] border border-[var(--border-color)] rounded-2xl px-4 py-3 text-xs sm:text-sm text-[var(--text-title)] outline-none focus:ring-2 focus:ring-[var(--color-accent)] focus:border-transparent cursor-pointer transition-all"
                     >
                       <option value="Treat Sponsor">Order Treat (Zomato/Swiggy Sponsor)</option>
                       <option value="Remote Tech Session">Remote Tech Debugging (AnyDesk/Zoom)</option>
@@ -1382,15 +1398,15 @@ export default function SiblingStudyDashboard() {
 
                   {ticketType === "Custom Help Request" && (
                     <div>
-                      <label className="text-[10px] font-mono font-bold text-[var(--text-title)] uppercase block mb-1">
+                      <label className="text-[10px] font-mono font-extrabold text-[var(--text-title)] uppercase block mb-1.5 tracking-wider">
                         Manual Help Description
                       </label>
                       <textarea
                         value={ticketDesc}
                         onChange={(e) => setTicketDesc(e.target.value)}
                         placeholder="Type exactly what you need help with manually..."
-                        rows="3"
-                        className="w-full bg-[var(--bg-primary)] border border-[var(--border-color)] rounded-xl px-3.5 py-2 text-xs text-[var(--text-title)] placeholder:text-slate-400 focus:outline-none focus:border-[var(--color-accent)]"
+                        rows="4"
+                        className="w-full bg-[var(--bg-primary)] border border-[var(--border-color)] rounded-2xl px-4 py-3 text-xs sm:text-sm text-[var(--text-title)] placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)] focus:border-transparent transition-all"
                         maxLength={250}
                         required
                       />
@@ -1399,81 +1415,89 @@ export default function SiblingStudyDashboard() {
 
                   <button
                     type="submit"
-                    className="w-full py-3 px-4 bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl text-xs font-bold shadow-md transition active:scale-95 flex items-center justify-center gap-2"
+                    className="w-full py-4 px-6 bg-emerald-600 hover:bg-emerald-500 text-white rounded-2xl text-xs sm:text-sm font-bold shadow-lg shadow-emerald-500/10 transition active:scale-95 flex items-center justify-center gap-2"
                   >
                     <Send className="w-4 h-4" />
-                    <span>Open WhatsApp & Dispatch Request</span>
+                    <span>Dispatch to Lucknow via WhatsApp</span>
                   </button>
                 </form>
               </div>
 
-              <div className="border-t border-[var(--border-color)] pt-4 mt-6 text-[10px] text-slate-400 font-mono text-center">
+              <div className="border-t border-[var(--border-color)] pt-5 mt-8 text-xs text-slate-400 font-mono text-center">
                 Destination: {brotherWhatsApp ? `Lucknow WhatsApp (+${brotherWhatsApp})` : "Not Configured ⚠️"}
               </div>
             </div>
 
-            {/* Right side: Ticket logs board */}
-            <div className="lg:col-span-7 bg-[var(--bg-card)] border border-[var(--border-color)] rounded-3xl p-6 shadow-[var(--card-shadow)] flex flex-col backdrop-blur-md">
-              <h3 className="text-xs font-bold text-[var(--text-title)] uppercase font-mono tracking-wider mb-2 flex items-center gap-2">
-                <MessageSquare className="w-4 h-4 text-emerald-500" />
-                Active Sibling Request Logs
-              </h3>
-              <p className="text-[11px] text-[var(--text-main)] opacity-70 mb-4">
-                Click on the status tag to progress the workflow manually as you or your brother resolves it.
-              </p>
+            {/* Right side: Ticket logs board (Span 7) */}
+            <div className="lg:col-span-7 bg-[var(--bg-card)] border border-[var(--border-color)] rounded-[2.5rem] p-8 shadow-[var(--card-shadow)] flex flex-col backdrop-blur-md justify-between">
+              <div>
+                <h3 className="text-lg font-bold text-[var(--text-title)] uppercase font-mono tracking-wider mb-2 flex items-center gap-2">
+                  <MessageSquare className="w-5 h-5 text-emerald-500 animate-pulse" />
+                  Sibling Request Board
+                </h3>
+                <p className="text-xs text-[var(--text-main)] opacity-70 mb-5">
+                  Click on the status tag to progress the workflow manually as you or your brother resolves it.
+                </p>
 
-              <div className="flex-1 overflow-y-auto max-h-[300px] flex flex-col gap-2 pr-1">
-                {tickets.length > 0 ? (
-                  tickets.map((t) => (
-                    <div 
-                      key={t.id}
-                      className="bg-[var(--bg-primary)] border border-[var(--border-color)] rounded-xl p-3.5 flex items-center justify-between gap-3 shadow-inner"
-                    >
-                      <div className="flex-1 min-w-0">
-                        <div className="flex items-center gap-2">
-                          <span className="text-[10px] font-mono font-extrabold text-cyan-600 dark:text-cyan-400 bg-cyan-500/10 px-2 py-0.5 rounded border border-cyan-500/20">
-                            {t.type}
-                          </span>
-                          <span className="text-[9px] text-slate-400 font-mono">
-                            #{t.id.toString().slice(-4)}
-                          </span>
+                <div className="flex-grow overflow-y-auto max-h-[360px] flex flex-col gap-3 pr-1">
+                  {tickets.length > 0 ? (
+                    tickets.map((t) => (
+                      <div 
+                        key={t.id}
+                        className="bg-[var(--bg-primary)] border border-[var(--border-color)] rounded-2xl p-4.5 flex items-center justify-between gap-4 shadow-sm hover:shadow-md transition-all duration-300"
+                      >
+                        <div className="flex-1 min-w-0">
+                          <div className="flex items-center gap-2">
+                            <span className="text-[10px] font-mono font-extrabold text-cyan-600 dark:text-cyan-400 bg-cyan-500/10 px-2.5 py-0.5 rounded border border-cyan-500/20">
+                              {t.type}
+                            </span>
+                            <span className="text-[9px] text-slate-400 font-mono">
+                              #{t.id.toString().slice(-4)}
+                            </span>
+                          </div>
+                          <p className="text-xs sm:text-sm text-[var(--text-title)] font-bold mt-2.5 leading-relaxed">
+                            {t.desc}
+                          </p>
                         </div>
-                        <p className="text-xs text-[var(--text-title)] font-medium mt-2 truncate">
-                          {t.desc}
-                        </p>
-                      </div>
 
-                      <div className="flex items-center gap-2 shrink-0">
-                        <button
-                          onClick={() => advanceTicketStatus(t.id)}
-                          title="Click to cycle status"
-                          className={`px-2.5 py-1 rounded text-[9px] font-bold font-mono transition border ${
-                            t.status === "OPEN"
-                              ? "bg-blue-950/10 border-blue-500/20 text-blue-500"
-                              : t.status === "PENDING"
-                              ? "bg-yellow-950/10 border-yellow-500/20 text-yellow-600 dark:text-yellow-400"
-                              : t.status === "IN PROGRESS"
-                              ? "bg-purple-950/10 border-purple-500/20 text-purple-600 dark:text-purple-400"
-                              : "bg-emerald-950/10 border-emerald-500/20 text-emerald-600 dark:text-emerald-400"
-                          }`}
-                        >
-                          {t.status}
-                        </button>
-                        <button
-                          onClick={() => deleteTicket(t.id)}
-                          className="p-1 hover:text-red-500 text-slate-400 transition"
-                        >
-                          <Trash2 className="w-3.5 h-3.5" />
-                        </button>
+                        <div className="flex items-center gap-2 shrink-0">
+                          <button
+                            onClick={() => advanceTicketStatus(t.id)}
+                            title="Click to cycle status"
+                            className={`px-3 py-1.5 rounded-lg text-[9px] sm:text-[10px] font-bold font-mono transition border ${
+                              t.status === "OPEN"
+                                ? "bg-blue-950/10 border-blue-500/20 text-blue-500"
+                                : t.status === "PENDING"
+                                ? "bg-yellow-950/10 border-yellow-500/20 text-yellow-600 dark:text-yellow-400"
+                                : t.status === "IN PROGRESS"
+                                ? "bg-purple-950/10 border-purple-500/20 text-purple-600 dark:text-purple-400"
+                                : "bg-emerald-950/10 border-emerald-500/20 text-emerald-600 dark:text-emerald-400"
+                            }`}
+                          >
+                            {t.status}
+                          </button>
+                          <button
+                            onClick={() => deleteTicket(t.id)}
+                            className="p-1.5 hover:text-red-500 text-slate-400 transition"
+                          >
+                            <Trash2 className="w-4 h-4" />
+                          </button>
+                        </div>
                       </div>
+                    ))
+                  ) : (
+                    <div className="text-center py-16 border border-dashed border-[var(--border-color)] rounded-[1.8rem] bg-[var(--bg-primary)]/30">
+                      <p className="text-xs text-slate-400 font-mono">No logged support requests. Tech operations clear!</p>
                     </div>
-                  ))
-                ) : (
-                  <div className="text-center py-10 border border-dashed border-[var(--border-color)] rounded-xl bg-[var(--bg-primary)]/30">
-                    <p className="text-xs text-slate-400 font-mono">No logged support requests. Tech operations clear!</p>
-                  </div>
-                )}
+                  )}
+                </div>
               </div>
+
+              {tickets.length > 0 && (
+                <div className="border-t border-[var(--border-color)] pt-4 mt-6 text-center text-[10px] text-slate-400 uppercase tracking-widest font-mono">
+                  Real-time synchronization active
+                </div>
+              )}
             </div>
 
           </div>
@@ -1481,39 +1505,39 @@ export default function SiblingStudyDashboard() {
 
       </main>
 
-      {/* --- QR CODE GENERATION FOOTER & SHARE --- */}
-      <footer className="w-full max-w-5xl px-4 mt-8 relative z-20">
-        <div className="bg-[var(--bg-card)] border border-[var(--border-color)] rounded-3xl p-5 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-[var(--card-shadow)] backdrop-blur-xl">
+      {/* --- WIDESCREEN QR CODE GENERATION FOOTER & SHARE --- */}
+      <footer className="w-full max-w-[1400px] mt-8 relative z-20">
+        <div className="bg-[var(--bg-card)] border border-[var(--border-color)] rounded-[2.5rem] p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-[var(--card-shadow)] backdrop-blur-xl">
           
           <div className="flex-1">
-            <h4 className="text-xs font-bold text-[var(--text-title)] uppercase font-mono tracking-wider mb-1 flex items-center gap-2">
-              <QrCode className="w-4 h-4 text-purple-500" />
+            <h4 className="text-sm font-bold text-[var(--text-title)] uppercase font-mono tracking-wider mb-2 flex items-center gap-2">
+              <QrCode className="w-5 h-5 text-purple-500 animate-pulse" />
               Gift Box QR Target Generator
             </h4>
-            <p className="text-[11px] text-[var(--text-main)] opacity-75 max-w-lg leading-relaxed">
+            <p className="text-xs text-[var(--text-main)] opacity-75 max-w-xl leading-relaxed">
               Generate a printable QR code pointing to this website. Stick it on top of her physical gift box in Mathura so she can load it immediately!
             </p>
-            <div className="mt-3 flex items-center gap-2 text-[10px] text-slate-400 font-mono">
+            <div className="mt-3 flex items-center gap-2 text-xs text-slate-400 font-mono">
               <span className="inline-block w-1.5 h-1.5 rounded-full bg-cyan-500 animate-ping" />
               <span>Target: {qrUrl}</span>
             </div>
           </div>
 
-          <div className="flex items-center gap-4 bg-[var(--bg-primary)] p-3 rounded-2xl border border-[var(--border-color)] shrink-0 shadow-inner">
+          <div className="flex items-center gap-5 bg-[var(--bg-primary)] p-4 rounded-3xl border border-[var(--border-color)] shrink-0 shadow-inner">
             <img
               src={`https://api.qrserver.com/v1/create-qr-code/?size=110x110&data=${encodeURIComponent(qrUrl)}`}
               alt="Live Site QR Code"
-              className="w-24 h-24 bg-white p-1 rounded-lg shadow-inner shrink-0"
+              className="w-24 h-24 bg-white p-1.5 rounded-xl shadow-inner shrink-0"
             />
             <div className="text-left font-mono">
-              <p className="text-[9px] text-slate-400">STATUS: READY</p>
-              <p className="text-[9px] text-slate-400 mt-1">SCAN FOR DASHBOARD</p>
+              <p className="text-[10px] text-slate-400">STATUS: READY</p>
+              <p className="text-[10px] text-slate-400 mt-1 font-bold">SCAN FOR DASHBOARD</p>
               <button
                 onClick={() => {
                   const link = prompt("Enter deployment URL target for QR code:", qrUrl);
                   if (link !== null) setQrUrl(link.trim() || window.location.href);
                 }}
-                className="mt-2 py-1 px-3.5 bg-[var(--bg-card)] hover:bg-[var(--bg-primary)] border border-[var(--border-color)] rounded-lg text-[9px] font-bold text-[var(--text-title)] transition"
+                className="mt-3 py-1.5 px-4 bg-[var(--bg-card)] hover:bg-[var(--bg-primary)] border border-[var(--border-color)] rounded-xl text-[10px] font-bold text-[var(--text-title)] transition hover:scale-105 active:scale-95 shadow-sm"
               >
                 Modify URL
               </button>
@@ -1522,9 +1546,9 @@ export default function SiblingStudyDashboard() {
 
         </div>
 
-        <div className="mt-8 text-center text-[10px] text-slate-500 font-mono">
+        <div className="mt-12 text-center text-xs text-slate-500 font-mono">
           <p>Built with ❤️ by your in-house B.Tech support engineer • Raksha Bandhan Edition</p>
-          <p className="text-slate-400 dark:text-slate-600 mt-1">Protected under remote sibling care protocols. Lucknow &harr; Mathura.</p>
+          <p className="text-slate-400 dark:text-slate-600 mt-1.5">Protected under remote sibling care protocols. Lucknow &harr; Mathura.</p>
         </div>
       </footer>
 
