@@ -1,0 +1,7 @@
+This folder is for storing childhood and MBBS memory images.
+For example, save files here matching the names in src/config.js:
+- neet-prep.jpg
+- apron-day.jpg
+- vacation.jpg
+
+The Memory Vault has built-in auto-placeholder styling if these images are missing, so the app will run perfectly even before you drop in the real photos.

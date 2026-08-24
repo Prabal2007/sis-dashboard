@@ -1,0 +1,5 @@
+{
+  "/hotline/page": "app/hotline/page.js",
+  "/page": "app/page.js",
+  "/gift-qr/page": "app/gift-qr/page.js"
+}
